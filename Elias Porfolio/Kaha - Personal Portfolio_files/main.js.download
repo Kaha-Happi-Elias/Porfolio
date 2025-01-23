@@ -1,6 +1,10 @@
 (function($){
 	"use strict";
 
+    AOS.init({
+            once: false
+    });
+
     // Navbar Menu JS
     $('.navbar-light .navbar-nav li a').on('click', function(e){
         var anchor = $(this);
@@ -30,6 +34,31 @@
             $('.navbar-style-two, .transparent-navbar').removeClass("is-sticky");
         }
     });
+
+    $(window).on('scroll',function() {
+        if ($(this).scrollTop() > 1000){  
+            $('.services-box').fadeIn(5000);
+        }
+    });
+
+    /*/services box
+    document.addEventListener('DOMContentLoaded', function() {
+    const serviceBoxes = document.querySelectorAll('.services-box');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target); // Remove the event listener after the animation is complete
+            }
+        });
+    },{
+        threshold: 0.1 // percentage of visibility before the animation begins
+    });
+    serviceBoxes.forEach(box => {
+    observer.observe(box);
+    })
+    });*/
+
 
     // MixItUp JS
 	try {
